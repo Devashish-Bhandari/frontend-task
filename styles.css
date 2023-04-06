@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    transition: all 400ms ease-in-out;
+}
+
+.outer-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+td.cell{
+    border: 1px solid black;
+}
+
+.cell{
+    padding: 2rem;
+}
+
+.box{
+    padding: 3rem 5rem;
+    background-color: tomato;
+    border-radius: 10px;
+    cursor: move;
+}
+
+.cell-item{
+    user-select: none;
+}
+
+.cell.hovered{
+    background-color: antiquewhite;
+}
+
+.is-dragging{
+    opacity: 0.8;
+    scale: 1.05;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25) ;
+}
