@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap');
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body{
@@ -9,7 +12,12 @@ body{
     height: 100vh;
     justify-content: center;
     align-items: center;
-    transition: all 400ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    background-color: #ecf1ff;
+}
+
+.heading{
+    font-weight: 700;
 }
 
 .outer-wrapper{
@@ -18,14 +26,21 @@ body{
     gap: 20px;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgb(198, 213, 253);
+    margin: 20px;
 }
 
 table{
     border-collapse: collapse;
+    font-weight: 700;
+
 }
 
 td.cell{
-    border: 1px solid black;
+    border: 1px solid rgb(168, 168, 168);
 }
 
 .cell{
@@ -33,9 +48,17 @@ td.cell{
 }
 
 .box{
-    padding: 3rem 5rem;
+    width: 8rem;
+    height: 5rem;
     background-color: tomato;
+    color: #fff;
+    font-size: 24px;
     border-radius: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     cursor: move;
 }
 
@@ -44,7 +67,7 @@ td.cell{
 }
 
 .cell.hovered{
-    background-color: antiquewhite;
+    background-color: rgb(230, 230, 230);
 }
 
 .is-dragging{
@@ -53,8 +76,30 @@ td.cell{
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25) ;
 }
 
+.controls{
+    width: 100%;
+    text-align: center;
+}
+
 .undo{
+    margin-bottom: 10px;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    border: none;
+    background-color: #FCCD3E;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.24);
+    color: #262626;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 300ms ease-in-out;
+}
+
+.undo:hover{
+    scale: 1.05;
+}
+
+.note{
+    font-size: 14px;
+    color: #999;
 }
