@@ -16,10 +16,7 @@ body{
     background-color: #ecf1ff;
 }
 
-.heading{
-    font-weight: 700;
-}
-
+/* Outer Div Styling */
 .outer-wrapper{
     display: flex;
     flex-direction: column;
@@ -33,6 +30,12 @@ body{
     margin: 20px;
 }
 
+/* Heading Style */
+.heading{
+    font-weight: 700;
+}
+
+/* Table Content Styling */
 table{
     border-collapse: collapse;
     font-weight: 700;
@@ -76,6 +79,7 @@ td.cell{
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25) ;
 }
 
+/* Controls Section Styling */
 .controls{
     width: 100%;
     text-align: center;
