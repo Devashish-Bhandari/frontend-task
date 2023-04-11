@@ -1,34 +1,42 @@
-const cells= document.querySelectorAll('.cell');
-const boxes= document.querySelectorAll('.box');
 
-let sourceBox= null; // The box which is being dragged
-let destinationBox= null; // The box at the cell where dragged box will be dropped
-let sourceCell= null; // The parent cell of the dragged box
-let destinationCell= null; // The cell on which source box is dropped
+const table= document.querySelector('#table');
+let tableRow= document.getElementsByTagName('tbody')[0];
+let n= 3;
 
-// This array will store the ids of the swapped boxes
-// Through this, we will be able to track the swapping events,
-// and therefore be able to undo the actions
+
+let sourceBox= null; 
+let destinationBox= null; 
+let sourceCell= null; 
+let destinationCell= null; 
+
+
 let eventsArr= [];
 
 // DRAG AND DROP FUNCTIONALITY
 
 // Applying Event Listeners to All the Boxes in the Cells
-boxes.forEach( (box) => {
+function insideBox(){
+    const cells= document.querySelectorAll('.cell');
+    const boxes= document.querySelectorAll('.box');
 
-    // When the box starts being dragged
-    box.addEventListener('dragstart', ()=> {
-        box.classList.add('is-dragging');
-        sourceBox= box;
-        sourceCell= box.parentElement;
+
+    boxes.forEach( (box) => {
+
+        // When the box starts being dragged
+        box.addEventListener('dragstart', ()=> {
+            box.classList.add('is-dragging');
+            sourceBox= box;
+            sourceCell= box.parentElement;
+        })
+        // When the box is released
+        box.addEventListener('dragend', ()=> {
+            box.classList.remove('is-dragging')
+        })
     })
-    // When the box is released
-    box.addEventListener('dragend', ()=> {
-        box.classList.remove('is-dragging')
-    })
-})
+
 
 // Adding Event Listeners to the Cells of the Table
+
 cells.forEach( (cell) => {
 
     // When the draggable box is over the cell
@@ -65,6 +73,41 @@ cells.forEach( (cell) => {
         cell.classList.remove('hovered');
     })
 })
+
+}
+
+insideBox();
+
+
+// ADD ROW FUNCTIONALITY
+let addBtn= document.querySelector('.addRow');
+
+addBtn.addEventListener('click', ()=>{
+    tableRow.innerHTML+=`
+        <tr class="row">
+            <td class="cell" id="cell-${3*n+1}">
+                <div class="box" id="box-${3*n+1}" style=" background-color: #29ACC0 " draggable="true">
+                    <p class="cell-item">${3*n+1}</p>
+                </div>
+            </td>
+            <td class="cell" id="cell-${3*n+2}">
+                <div class="box" id="box-${3*n+2}" style=" background-color: #566CB4 " draggable="true">
+                    <p class="cell-item">${3*n+2}</p>
+                </div>
+            </td>
+            <td class="cell" id="cell-${3*n+3}">
+                <div class="box" id="box-${3*n+3}" style=" background-color: #6C4EA1 " draggable="true">
+                    <p class="cell-item">${3*n+3}</p>
+                </div>
+            </td>
+        </tr> `
+
+        n++;
+
+        insideBox();
+
+})
+
 
 
 // UNDO FUNCTIONALITY
@@ -104,3 +147,5 @@ undoBtn.addEventListener('click', ()=>{
     }
 
 })
+
+
